@@ -1,0 +1,66 @@
+
+*{
+   
+    box-sizing: border-box;
+}
+.newuser{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+.card{
+    width: 28rem;
+    margin-top: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+}
+.formcontrol{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 18rem;
+    margin-left: 75px;
+}
+.formcontrol-1{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 18rem;
+    margin-left: 48px;
+}
+.formcontrol-2{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 18rem;
+    margin-left: 51px;
+    
+}
+.formcontrol-3{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 18rem;
+    margin-left: 95px;
+}
+.formcontrol-4{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 18rem;
+    margin-left: 95px;
+}
+.btn{
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+}
+.name-error{
+    margin-left: 6.5rem;
+}
+.body {
+    background-image: url('../assets/create\ user.jpg'); 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center; 
+    height: 100vh; 
+    margin: 0; 
+  }
+ 

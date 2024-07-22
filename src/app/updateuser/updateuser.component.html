@@ -1,0 +1,42 @@
+<div class="body">
+<div class="container newuser">
+    <div class="card ">
+      <h2>Create New User</h2>
+      <form [formGroup]="userform " (ngSubmit)="onsumit()">
+
+       <div class="form-group">
+                <label for="name">Name :</label>
+                <input type="text" id="name" formControlName="name" class="formcontrol-1" placeholder="Enter Name">
+                <div *ngIf="userform.get('name')?.invalid && userform.get('name')?.touched" class="text-danger name-error">
+                        Name is required
+                      </div>
+        </div>
+        <div class="form-group">
+                <label for="email">Email :</label>
+                <input type="emaill" id="email" formControlName="email" class="formcontrol-2" placeholder="Enter email">
+                <div *ngIf="userform.get('email')?.invalid && userform.get('email')?.touched" class="text-danger name-error">
+                        Email is required
+                      </div>
+        </div>
+        <div class="form-group">
+                <label for="role">Role :</label>
+                <ng-select  id="role" formControlName="role" class="formcontrol-3"
+                [items]="role1" bindLabel="name" bindValue="name" [(ngModel)]="role">
+               </ng-select>
+        </div>
+        <div class="form-group">
+                <label for="Organization_id">Organisation :</label>
+                <ng-select  id="organization_id" formControlName="organization_id"
+                 [items]="organization" bindLabel="name" bindValue="id" [(ngModel)]="organization_id" class="formcontrol-4" >
+                </ng-select>
+        </div>
+       
+
+                <button class="btn btn-primary" type="submit">Create User</button>
+
+
+      </form>
+    </div>
+
+</div>
+</div>

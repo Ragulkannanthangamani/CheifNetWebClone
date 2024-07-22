@@ -1,0 +1,87 @@
+
+*{
+   
+    box-sizing: border-box;
+}
+.newuser{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+.card{
+    width: 28rem;
+    margin-top: 7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:transparent;
+    margin-right: 2rem;
+}
+.successmessage{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    width: 30rem;
+    background-color: green;
+    color: azure;
+}
+.name-error{
+    margin-left: 6.5rem;
+}
+.label{
+    color:wheat;
+}
+.formcontrol{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 18rem;
+    margin-left: 75px;
+   
+}
+.formcontrol-1{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 18rem;
+    margin-left: 48px;
+}
+.formcontrol-2{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 18rem;
+    margin-left: 51px;
+}
+.formcontrol-3{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 18rem;
+    margin-left: 58px;
+}
+.formcontrol-4{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 18rem;
+}
+.btn{
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+}
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-left: 10rem;
+     margin-bottom: 3rem;
+  }
+  .body {
+    background-image: url('../assets/pexels-quang-nguyen-vinh-222549-2165790.jpg'); 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center; 
+    height: 100vh; 
+    margin: 0; 
+  }
+  

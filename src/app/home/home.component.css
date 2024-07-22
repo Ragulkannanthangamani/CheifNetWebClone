@@ -1,0 +1,157 @@
+.home-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .otp-input{
+    width: 22.5rem;
+    height: 2.5rem;
+    border: 1px solid #ced4da; 
+  }
+
+  .card{
+   margin-right: 10rem;
+  }
+
+  .card-body{
+    margin-left:3rem ;
+   
+  }
+  .button{
+    width: 22.5rem;
+    margin-top: 1rem;
+    height: 2.5rem;
+  }
+
+  .error-message{
+    font-size: 1.1em;
+    color: red;
+    margin-top: 10px;
+}
+.error-message-1 {
+  font-size: 1em;
+  color: red;
+  margin-top: 10px;
+  
+   border: 1px solid rgb(214, 65, 65);
+  border-color:5px rgb(214, 65, 65);
+  font-family: 'Times New Roman', Times, serif;
+  padding: 10px;
+  width:30rem;
+  background-color: rgba(241, 172, 172, 0.808);
+}
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border-left-color: #09f;
+  animation: spin 1s linear infinite;
+  margin-left: 10rem;
+}
+
+@keyframes spin {
+  /* to {
+    transform: rotate(360deg); */
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg);
+  }
+}
+
+  @media (max-width: 575.98px) {
+    .home-container {
+      padding: 20px;
+    }
+  
+    .otp-input {
+      width: 20rem;
+      height: 2rem;
+      padding: 8px;
+      box-sizing: border-box;
+      border: 1px solid #ced4da; 
+    }
+  
+    .card {
+      margin-right: 0;
+      width:15rem;
+      height: auto;
+      margin-left: 11rem;
+    }
+  
+    .card-body {
+      margin-left: 0;
+      padding: 10px;
+      margin-left: 4rem;
+    }
+  
+    .button {
+      margin-top: 3rem;
+      width: 20rem;
+      height: 2rem;
+      margin-top: 10px;
+    }
+  
+    .card-title {
+      font-size: 1.5rem;
+    }
+  
+    .card-subtitle {
+      font-size: 1rem;
+    }
+  
+    .btn {
+      font-size: 0.875rem;
+      padding: 10px;
+    }
+  }
+  
+  @media (min-width:415px)and (max-width:575px){
+    .card{
+      margin-right: 3rem;
+    }
+  }
+ 
+ 
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+    .otp-input {
+      width: 22.5rem;
+      height: 2.5rem;
+    }
+  
+    .card {
+      margin-right: 5rem;
+      width: 30rem;
+    }
+  
+    .card-body {
+      margin-left: 2rem;
+    }
+  
+    .button {
+      width: 22.5rem;
+      height: 2.5rem;
+    }
+  }
+  
+ 
+  @media (min-width: 1200px) {
+    .otp-input {
+      width: 22.5rem;
+      height: 2.5rem;
+    }
+  
+    .card {
+      margin-right: 10rem;
+      width: 30rem;
+    }
+  
+    .card-body {
+      margin-left: 3rem;
+    }
+  
+    .button {
+      width: 22.5rem;
+      height: 2.5rem;
+    }
+  }

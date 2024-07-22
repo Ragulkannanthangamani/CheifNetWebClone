@@ -1,0 +1,47 @@
+<div class="body">
+<div class="container newuser">
+    <div class="card ">
+      <h2 class="label">Edit Existing User</h2>
+      <div *ngIf="successmessage" class="alert alert-success successmessage" role="alert">
+        User updated successfully!
+      </div>
+
+      <form [formGroup]="userform"  (ngSubmit)="onsumit()">
+        <div class="form-group">
+                <label class="label" for="id">ID :</label>
+                <input type="text" id="id" formControlName="id" class="formcontrol" readonly>
+       </div>
+       <div class="form-group">
+                <label class="label" for="name">Name :</label>
+                <input type="text" id="name" formControlName="name" class="formcontrol-1" >
+                <div *ngIf="userform.get('name')?.invalid && userform.get('name')?.touched" class="text-danger name-error">
+                        Name is required
+                      </div>
+        </div>
+        <div class="form-group">
+                <label class="label" for="email">Email :</label>
+                <input type="email" id="email" formControlName="email" class="formcontrol-2"readonly>
+        </div>
+        <div class="form-group">
+                <label class="label" for="role">Role :</label>
+                <input
+                type="text" id="role" formControlName="role" class="formcontrol-3"readonly>
+  
+        </div>
+        <div class="form-group">
+                <label class="label" for="Organization_id">Organisation :</label>
+                <input  id="organization_id" formControlName="organization_id" class="formcontrol-4" readonly>
+                
+        </div>
+        <div class="spinner" *ngIf="isloading" >
+                
+               </div>
+
+                <button *ngIf="!isloading" class="btn btn-primary" type="submit" [disabled]="userform.get('name')?.invalid">Submit</button>
+
+
+      </form>
+    </div>
+
+</div>
+</div>
