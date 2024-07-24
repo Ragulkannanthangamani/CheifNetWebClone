@@ -12,6 +12,7 @@ import { Home1Component } from './home-1/home-1.component';
 import { UpdateuserComponent } from './updateuser/updateuser.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { EditComponent } from './edit/edit.component';
+import { OrganizationComponent } from './organization/organization.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { EditComponent } from './edit/edit.component';
     Home1Component,
     UpdateuserComponent,
     EditComponent,
+    OrganizationComponent,
   ],
   imports: [
     BrowserModule,

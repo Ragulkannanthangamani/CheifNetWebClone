@@ -14,6 +14,7 @@ export class Home1Component implements OnInit {
   pagination: any = {};
   errorMessage: string | null = null;
   isLoading = true;
+  issidebarvisible=true;
   
   constructor(private home1service: home1service,private otpservice:otpservice,private router:Router,private user:updateuserservice){
 
@@ -57,5 +58,8 @@ logout(){
   localStorage.clear;
   this.router.navigate(['/login']);
 }
+toggleSidebar(){
+  this.issidebarvisible=!this.issidebarvisible;
+   }
 }
 

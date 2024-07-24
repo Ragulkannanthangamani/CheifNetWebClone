@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { Home1Component } from './home-1/home-1.component';
 import { UpdateuserComponent } from './updateuser/updateuser.component';
 import { EditComponent } from './edit/edit.component';
+import { OrganizationComponent } from './organization/organization.component';
 
 const routes: Routes = [
   // { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path:'home-1',component: Home1Component},
   { path:'updateuser',component:UpdateuserComponent},
   { path: 'updateuser/:id',component:EditComponent},
+  { path:'organization',component:OrganizationComponent},
  
 ];
 

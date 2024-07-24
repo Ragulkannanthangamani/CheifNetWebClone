@@ -28,4 +28,55 @@
     margin-right: 5px;
   }
 
+  .chiefnetimg{
+      padding-top: 11px;
+      padding-bottom: 8px;
+      margin-left: 2rem;
+  }
+  ul,ol{
+    list-style-type: none;
   
+  }
+  li{
+    margin-right: 40px;
+   padding-top: 10px;
+   color: rgb(126, 119, 109);
+  }
+  .sidebar{
+    background-color: rgb(173, 221, 221);
+    height: 30rem;
+    border-radius: 5px;
+  }
+  .organization{
+    font-weight: 500;
+    margin-right: 5px;
+  }
+  .organization:hover{
+    background-color: rgba(151, 190, 190, 0.685);
+    width: 10rem;
+    border-radius: 4px;
+  }
+  .users{
+    font-weight: 500;
+    margin-right: 60px;
+  }
+  .users:hover{
+    background-color: rgba(151, 190, 190, 0.685);
+    width: 10rem;
+    border-radius: 4px;
+  }
+  .mi{
+    padding-left: 0;
+  }
+  .mi1{
+    padding-right: 0;
+  }
+  .burger-button{
+    border: none;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 4px;
+}
+.burger-button:hover{
+    background-color: rgb(179, 252, 255);
+}
