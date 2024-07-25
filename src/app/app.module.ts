@@ -13,6 +13,7 @@ import { UpdateuserComponent } from './updateuser/updateuser.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { EditComponent } from './edit/edit.component';
 import { OrganizationComponent } from './organization/organization.component';
+import { AddOrganizationComponent } from './organization/add-organization/add-organization.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { OrganizationComponent } from './organization/organization.component';
     UpdateuserComponent,
     EditComponent,
     OrganizationComponent,
+    AddOrganizationComponent,
   ],
   imports: [
     BrowserModule,

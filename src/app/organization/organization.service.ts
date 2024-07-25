@@ -35,7 +35,7 @@ interface pagination{
 }
 
 interface ApiResponse {
-    organization: organization[];
+    organizations: organization[];
     pagination: pagination;
 }
 

@@ -9,10 +9,12 @@ import { organizationservice } from './organization.service';
 export class OrganizationComponent implements OnInit {
   
   issidebarvisible =true;
+  organizations:any[]=[];
+  pagination: any = {};
   constructor(private router:Router,private organizationservice:organizationservice){}
   
   ngOnInit(): void {
-   
+   this.fetchdata();
   }
   logout(){
     localStorage.clear;
@@ -25,8 +27,16 @@ export class OrganizationComponent implements OnInit {
   fetchdata(){
   this.organizationservice.getorganization().subscribe({
     next:Response =>{
-      
+      console.log(Response);
+      this.organizations= Response.organizations;
+      this.pagination=Response.pagination;
+    },
+    error:err=>{
+      console.log('something gone mistake',err);
     }
-  })
+ })
   }
+onclicked(){
+  this.router.navigate(['/AddOrganization']);
+}
 }
