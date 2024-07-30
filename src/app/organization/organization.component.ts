@@ -11,6 +11,7 @@ export class OrganizationComponent implements OnInit {
   issidebarvisible =true;
   organizations:any[]=[];
   pagination: any = {};
+  selectedOrganizationId: string = '';
 
   constructor(private router:Router,private organizationservice:organizationservice){}
   
@@ -31,6 +32,8 @@ export class OrganizationComponent implements OnInit {
       console.log(Response);
       this.organizations= Response.organizations;
       this.pagination=Response.pagination;
+      const userjson= JSON.stringify(Response.organizations);
+      this.organizationservice.savelocalstorage(userjson);
     },
     error:err=>{
       console.log('something gone mistake',err);
@@ -40,9 +43,13 @@ export class OrganizationComponent implements OnInit {
 onclicked(){
   this.router.navigate(['/AddOrganization']);
 }
-deleteOrganization(id:string){
+selectOrganization(id: string) {
+  this.selectedOrganizationId = id;
+}
+
+deleteOrganization(){
  
-  this.organizationservice.deleteOrganization(id).subscribe({
+  this.organizationservice.deleteOrganization( this.selectedOrganizationId).subscribe({
     next:Response=>{
       console.log('Organization deleted successfully', Response);
       this.fetchdata();
@@ -51,5 +58,12 @@ deleteOrganization(id:string){
       console.error('Error deleting organization', err);
     }
   })
+}
+editorganization(){
+    if (this.selectedOrganizationId) {
+      this.router.navigate(['/EditOrganization', this.selectedOrganizationId]);
+    } else {
+      console.log('No organization selected');
+    }
 }
 }

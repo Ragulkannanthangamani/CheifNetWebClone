@@ -1,0 +1,36 @@
+*{
+   
+    box-sizing: border-box;
+}
+.card{
+    width: 30rem;  
+    background-color: transparent;    
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+.title{
+    margin-left: 5rem;
+    padding: 10px;
+    color: wheat;
+
+}
+.form-control{
+    max-width: 20rem;
+}
+.label{
+    padding-left: 10px;
+    color: wheat;
+  }
+  .body {
+    background-image: url('./../../assets/Edit-Organization-bg.jpg'); 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center; 
+    height: 100vh; 
+    margin: 0; 
+   
+  }

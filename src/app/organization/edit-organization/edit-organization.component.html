@@ -1,0 +1,58 @@
+<div class="body">
+    <p>-</p>
+    <div class="container">
+        <div class="card">
+            <h2 class="title">Add Organization</h2>
+            <form [formGroup]="userform">
+                <div class="row mb-3 label">
+                    <label for="name" class="col-sm-3 col-form-label">Name</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="name" formControlName="name">
+                    </div>
+                </div>
+                <div class="row mb-3 label">
+                    <label for="Description" class="col-sm-3 col-form-label">Description</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="Description" formControlName="description">
+                    </div>
+                </div>
+                <div class="row mb-3 label">
+                    <label for="uuid" class="col-sm-3 col-form-label">UUID</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="uuid" formControlName="uuid">
+                    </div>
+                </div>
+                <div class="row mb-3 label">
+                    <label for="client_email" class="col-sm-3 col-form-label">Client Email</label>
+                    <div class="col-sm-9">
+                        <input type="email" class="form-control" id="client_email" formControlName="client_email">
+                    </div>
+                </div>
+                <div class="row mb-3 label">
+                    <label for="client_mobile_no" class="col-sm-3 col-form-label">Client Mobile-NO</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="client_mobile_no" formControlName="client_mobile_no">
+                    </div>
+                </div>
+                <div class="row mb-3 label">
+                    <label for="client_name" class="col-sm-3 col-form-label">Client Name</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="client_name" formControlName="client_name">
+                    </div>
+                </div>
+                <div class="row mb-3 label">
+                    <label for="client_address" class="col-sm-3 col-form-label">Client Address</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="client_address" formControlName="client_address">
+                    </div>
+                </div>
+                <div class="row mb-3 label">
+                    <label for="prisma_firewall" class="col-sm-3 col-form-label">Prisma Firewall</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="prisma_firewall" formControlName="prisma_firewall">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

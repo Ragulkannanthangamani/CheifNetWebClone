@@ -44,6 +44,7 @@ interface ApiResponse {
 })
 
 export class organizationservice {
+    private organizationlist ='organizationlist';
     private baseurl =  'https://chiefnet-stg-api.yavar.in';
 constructor(private otpservice:otpservice,private http:HttpClient){}
 getorganization():Observable< ApiResponse>{
@@ -64,4 +65,19 @@ deleteOrganization(ids:string):Observable<any>{
     .set('Authorization', `${AccessToken}`);
  return this.http.delete<any>(`${this.baseurl}/v1/organizations`,{headers,params})
 }
+savelocalstorage(organizationlist:any):void{
+    console.log(organizationlist);
+     localStorage.setItem(this.organizationlist,organizationlist);
+  }
+
+  getlocalstorage():any[] | null{
+    let organjson=localStorage.getItem(this.organizationlist)
+   
+  if (organjson !== null) {
+    return JSON.parse(organjson);
+  } else {
+    return null;
+  }
+}
+
 }

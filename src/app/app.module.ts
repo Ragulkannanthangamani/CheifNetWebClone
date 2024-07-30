@@ -14,6 +14,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { EditComponent } from './edit/edit.component';
 import { OrganizationComponent } from './organization/organization.component';
 import { AddOrganizationComponent } from './organization/add-organization/add-organization.component';
+import { EditOrganizationComponent } from './organization/edit-organization/edit-organization.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,8 @@ import { AddOrganizationComponent } from './organization/add-organization/add-or
     EditComponent,
     OrganizationComponent,
     AddOrganizationComponent,
+    EditOrganizationComponent,
+    
   ],
   imports: [
     BrowserModule,
