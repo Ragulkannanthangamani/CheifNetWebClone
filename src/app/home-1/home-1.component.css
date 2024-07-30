@@ -50,7 +50,7 @@
   }
   .organization{
     font-weight: 500;
-    margin-right: 5px;
+    margin-right: 4px;
   }
   .organization:hover{
     background-color: rgba(151, 190, 190, 0.685);

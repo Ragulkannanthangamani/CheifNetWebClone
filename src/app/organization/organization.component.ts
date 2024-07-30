@@ -11,6 +11,7 @@ export class OrganizationComponent implements OnInit {
   issidebarvisible =true;
   organizations:any[]=[];
   pagination: any = {};
+
   constructor(private router:Router,private organizationservice:organizationservice){}
   
   ngOnInit(): void {
@@ -38,5 +39,17 @@ export class OrganizationComponent implements OnInit {
   }
 onclicked(){
   this.router.navigate(['/AddOrganization']);
+}
+deleteOrganization(id:string){
+ 
+  this.organizationservice.deleteOrganization(id).subscribe({
+    next:Response=>{
+      console.log('Organization deleted successfully', Response);
+      this.fetchdata();
+    },
+    error:err=>{
+      console.error('Error deleting organization', err);
+    }
+  })
 }
 }

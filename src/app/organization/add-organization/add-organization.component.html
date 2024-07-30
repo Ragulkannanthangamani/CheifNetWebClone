@@ -4,56 +4,86 @@
         
       <div class="card">
            <h2 class="title">Add Organization</h2>
+           <div *ngIf="successmessage" class="alert alert-success successmessage" role="alert">
+            Organization Added successfully!
+          </div>
           
-           <form [formGroup]="userform">
+           <form [formGroup]="userform" (ngSubmit)="onSubmit()">
                 <div class="row mb-3 label">
                     <label for=" name" class="col-sm-3 col-form-label col-form-label-sm">Name</label>
                     <div class="col-sm-9">
-                    <input type="text" class="form-control form-control-sm" id=" name" placeholder="Enter the Name" formControlName=" name">
+                        <input type="text" class="form-control form-control-sm" id="name" placeholder="Enter the Name" formControlName="name">
+                        <div *ngIf="userform.get('name')?.invalid && userform.get('name')?.touched" class="text-danger">
+                            <div *ngIf="userform.get('name')?.errors?.['required']">Name is required</div>
+                          </div>
                     </div>
                 </div>
                 <div class="row mb-3 label">
                     <label for=" Description" class="col-sm-3 col-form-label col-form-label-sm">Description</label>
                     <div class="col-sm-9">
-                    <input type="text" class="form-control form-control-sm" id=" Description" placeholder="Type something..." formControlName=" Description">
+                        <input type="text" class="form-control form-control-sm" id="Description" placeholder="Type something..." formControlName="Description">
+                        <div *ngIf="userform.get('Description')?.invalid && userform.get('Description')?.touched" class="text-danger">
+                            <div *ngIf="userform.get('Description')?.errors?.['required']">Description is required</div>
+                          </div>
                     </div>
                 </div>
                 <div class="row mb-3 label">
                     <label for="UUID" class="col-sm-3 col-form-label col-form-label-sm ">UUID</label>
                     <div class="col-sm-9">
-                    <input type="text" class="form-control form-control-sm" id="UUID" placeholder="Enter the UUID" formControlName="UUID">
+                        <input type="text" class="form-control form-control-sm" id="UUID" placeholder="Enter the UUID" formControlName="UUID">
+                        <div *ngIf="userform.get('UUID')?.invalid && userform.get('UUID')?.touched" class="text-danger">
+                            <div *ngIf="userform.get('UUID')?.errors?.['required']">UUID is required</div>
+                          </div>
                     </div>
                 </div>
                 <div class="row mb-3 label">
                     <label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm">Client-Email</label>
                     <div class="col-sm-9">
-                    <input type="email" class="form-control form-control-sm" id="colFormLabelSm" placeholder="Enter the Client-Email" formControlName="ClientEmail">
+                        <input type="email" class="form-control form-control-sm" id="colFormLabelSm" placeholder="Enter the Client-Email" formControlName="ClientEmail">
+                        <div *ngIf="userform.get('ClientEmail')?.invalid && userform.get('ClientEmail')?.touched" class="text-danger">
+                            <div *ngIf="userform.get('ClientEmail')?.errors?.['required']">Client email is required</div>
+                            <div *ngIf="userform.get('ClientEmail')?.errors?.['email']">Invalid email format</div>
+                          </div>
                     </div>
                 </div>
                 <div class="row mb-3 label">
                     <label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm">Client Mobile <br>no</label>
                     <div class="col-sm-9">
-                    <input type="number" class="form-control form-control-sm" id="colFormLabelSm" placeholder="Enter the Client-Mobile no" formControlName=" ClientMobileno">
+                        <input type="number" class="form-control form-control-sm" id="colFormLabelSm" placeholder="Enter the Client-Mobile no" formControlName="ClientMobileno">
+                        <div *ngIf="userform.get('ClientMobileno')?.invalid && userform.get('ClientMobileno')?.touched" class="text-danger">
+                            <div *ngIf="userform.get('ClientMobileno')?.errors?.['required']">Client mobile number is required</div>
+                            <div *ngIf="userform.get('ClientMobileno')?.errors?.['pattern']">Invalid mobile number format</div>
+                          </div>
                     </div>
                 </div>
                 <div class="row mb-3 label">
                     <label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm">Client_Name</label>
                     <div class="col-sm-9">
-                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" placeholder="Enter the Client-Name" formControlName=" ClientName">
+                        <input type="text" class="form-control form-control-sm" id="colFormLabelSm" placeholder="Enter the Client-Name" formControlName="ClientName">
+                        <div *ngIf="userform.get('ClientName')?.invalid && userform.get('ClientName')?.touched" class="text-danger">
+                            <div *ngIf="userform.get('ClientName')?.errors?.['required']">Client name is required</div>
+                          </div>
                     </div>
                 </div>
                 <div class="row mb-3 label">
                     <label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm">Client_Address</label>
                     <div class="col-sm-9">
-                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" placeholder="Enter the Client-Address" formControlName=" ClientAddress">
+                        <input type="text" class="form-control form-control-sm" id="colFormLabelSm" placeholder="Enter the Client-Address" formControlName="ClientAddress">
+                        <div *ngIf="userform.get('ClientAddress')?.invalid && userform.get('ClientAddress')?.touched" class="text-danger">
+                            <div *ngIf="userform.get('ClientAddress')?.errors?.['required']">Client address is required</div>
+                          </div>
                     </div>
                 </div>
                 <div class="row mb-3 label">
                     <label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm">Prisma <br>Firewall</label>
                     <div class="col-sm-9">
-                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" placeholder="Enter the prisma_firewall" formControlName=" PrismaFirewall">
+                        <input type="text" class="form-control form-control-sm" id="colFormLabelSm" placeholder="Enter the prisma_firewall" formControlName="PrismaFirewall">
+                        <div *ngIf="userform.get('PrismaFirewall')?.invalid && userform.get('PrismaFirewall')?.touched" class="text-danger">
+                            <div *ngIf="userform.get('PrismaFirewall')?.errors?.['required']">Prisma firewall is required</div>
+                          </div>
                     </div>
                 </div>
+                <button type="submit" class="btn btn-primary btn-sm submit-btn">Submit</button>
            </form>
       </div>
     </div>

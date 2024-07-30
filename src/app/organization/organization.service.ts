@@ -5,7 +5,7 @@ import { HttpHeaders, HttpParams,HttpClient } from "@angular/common/http";
 
 
 interface organization{
-      id: 0
+      id: 0;
       name: string;
       description: string;
       devices_count: 0;
@@ -53,11 +53,15 @@ getorganization():Observable< ApiResponse>{
 
     let params = new HttpParams();
     params = params.append('visible_columns', 'Name,UUID,Device cont,Provisioned devices count,Prisma Servers,Client name,client email,client phone,Client Address')
-
-
-
     console.log(params, 'logging params');
- return this.http.get< ApiResponse>(`${this.baseurl}/v1/organizations`, { headers:headers,params });
+    return this.http.get< ApiResponse>(`${this.baseurl}/v1/organizations`, { headers:headers,params });
 
+}
+deleteOrganization(ids:string):Observable<any>{
+    const AccessToken=this.otpservice.getAccessToken();
+    let params = new HttpParams().set('ids', ids);
+    const headers = new HttpHeaders()
+    .set('Authorization', `${AccessToken}`);
+ return this.http.delete<any>(`${this.baseurl}/v1/organizations`,{headers,params})
 }
 }

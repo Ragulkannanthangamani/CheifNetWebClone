@@ -19,7 +19,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 5rem;
+    margin-top: 4rem;
 }
 .title{
     margin-left: 5rem;
@@ -27,7 +27,7 @@
     color: wheat;
 }
 .body {
-    background-image: url('./../../assets/Add-Organization\ bg.jpg'); 
+    background-image: url('./../../assets/Add-organization1.jpg'); 
     background-size: cover; 
     background-repeat: no-repeat; 
     background-position: center; 
@@ -35,4 +35,16 @@
     margin: 0; 
    
   }
-  
+  .submit-btn{
+    margin-left: 10px;
+    margin-bottom: 1rem;
+  }
+  .successmessage{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    width: 30rem;
+    background-color: green;
+    color: azure;
+}

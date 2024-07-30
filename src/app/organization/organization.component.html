@@ -88,10 +88,13 @@
                             <td>{{organization.prisma_firewall}}</td>
                             <td>{{organization.client_name }}</td> 
                             <td>{{organization.client_email }}</td> 
-                            <td>{{organization.client_mobile_no   }}</td> 
+                            <td>{{organization.client_mobile_no}}</td> 
                             <td>{{organization.client_address }}</td> 
-                                                
+                             <td><button type="button" class="btn btn-danger btn-sm delect" (click)="deleteOrganization(organization.id)"  >
+                                   -
+                              </button></td>                 
                             
+                           
                           </tr>
                         </tbody>
                       </table>

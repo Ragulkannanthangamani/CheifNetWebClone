@@ -58,3 +58,8 @@ li{
 .burger-button:hover{
     background-color: rgb(179, 252, 255);
 }
+.delect{
+  border-style: none;
+  margin-top: 20px;
+ 
+}
