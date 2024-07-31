@@ -80,4 +80,11 @@ savelocalstorage(organizationlist:any):void{
   }
 }
 
+
+saveorgan(organization:{organization:{name:string,description:string, uuid:string,client_email:string,client_mobile_no:string, client_name:string,client_address:string, prisma_firewall:boolean}},id:number):Observable<any>{
+           
+  const AccessToken=this.otpservice.getAccessToken();
+  const headers = new HttpHeaders().set('Authorization', `${AccessToken}`);
+  return  this.http.put<any>(`${this.baseurl}/v1/organizations/${id}`,organization,{headers })
+}
 }

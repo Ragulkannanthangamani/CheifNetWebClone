@@ -3,7 +3,7 @@
     <div class="container">
         <div class="card">
             <h2 class="title">Add Organization</h2>
-            <form [formGroup]="userform">
+            <form [formGroup]="userform" (ngSubmit)="onsubmit()">
                 <div class="row mb-3 label">
                     <label for="name" class="col-sm-3 col-form-label">Name</label>
                     <div class="col-sm-9">
@@ -52,6 +52,8 @@
                         <input type="text" class="form-control" id="prisma_firewall" formControlName="prisma_firewall">
                     </div>
                 </div>
+                <button type="submit" class="btn btn-primary btn-sm submit">submit</button>
+                 
             </form>
         </div>
     </div>

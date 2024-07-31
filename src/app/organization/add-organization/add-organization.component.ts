@@ -28,16 +28,17 @@ export class AddOrganizationComponent implements OnInit {
   }
   onSubmit(): void {
     if (this.userform.valid) {
-      console.log(this.userform.value);
+      console.log(this.userform.value,'submit');
       const organization={
         organization: {
           name: this. userform.get('name')?.value ,
-          description: this. userform.get('description')?.value ,
-          uuid: this. userform.get('uuid')?.value ,
-          client_email: this. userform.get('client_email')?.value ,
-          client_mobile_no: this. userform.get('client_mobile_no')?.value ,
-          client_address: this. userform.get('client_address')?.value ,
-          prisma_firewall: this. userform.get('prisma_firewall')?.value 
+          description: this. userform.get('Description')?.value ,
+          uuid: this. userform.get('UUID')?.value ,
+          client_email: this. userform.get('ClientEmail')?.value ,
+          client_mobile_no: this. userform.get('ClientMobileno')?.value ,
+          client_name:this.userform.get('ClientName')?.value,
+          client_address: this. userform.get('ClientAddress')?.value ,
+          prisma_firewall: this. userform.get('PrismaFirewall')?.value 
         }
       
         

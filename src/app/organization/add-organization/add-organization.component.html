@@ -77,13 +77,18 @@
                 <div class="row mb-3 label">
                     <label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm">Prisma <br>Firewall</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control form-control-sm" id="colFormLabelSm" placeholder="Enter the prisma_firewall" formControlName="PrismaFirewall">
-                        <div *ngIf="userform.get('PrismaFirewall')?.invalid && userform.get('PrismaFirewall')?.touched" class="text-danger">
-                            <div *ngIf="userform.get('PrismaFirewall')?.errors?.['required']">Prisma firewall is required</div>
-                          </div>
+                        <select type="text" class="form-control form-control-sm" id="colFormLabelSm" placeholder="Enter the prisma_firewall" formControlName="PrismaFirewall">
+                        
+                                <option [value]="true">True</option>
+                                <option [value]="false">False</option>
+                              
+                            <div *ngIf="userform.get('PrismaFirewall')?.invalid && userform.get('PrismaFirewall')?.touched" class="text-danger">
+                                <div *ngIf="userform.get('PrismaFirewall')?.errors?.['required']">Prisma firewall is required</div>
+                            </div>
+                        </select>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary btn-sm submit-btn">Submit</button>
+                <button type="submit" class="btn btn-primary btn-sm submit-btn" [disabled]="userform.invalid">Submit</button>
            </form>
       </div>
     </div>

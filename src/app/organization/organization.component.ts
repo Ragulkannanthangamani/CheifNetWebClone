@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { organizationservice } from './organization.service';
+
 @Component({
   selector: 'app-organization',
   templateUrl: './organization.component.html',
@@ -12,6 +13,8 @@ export class OrganizationComponent implements OnInit {
   organizations:any[]=[];
   pagination: any = {};
   selectedOrganizationId: string = '';
+  buttondisable:boolean=false;
+  delectmodal:boolean=true;
 
   constructor(private router:Router,private organizationservice:organizationservice){}
   
@@ -45,6 +48,7 @@ onclicked(){
 }
 selectOrganization(id: string) {
   this.selectedOrganizationId = id;
+  this.buttondisable=true
 }
 
 deleteOrganization(){
@@ -52,7 +56,9 @@ deleteOrganization(){
   this.organizationservice.deleteOrganization( this.selectedOrganizationId).subscribe({
     next:Response=>{
       console.log('Organization deleted successfully', Response);
-      this.fetchdata();
+      this.fetchdata(); 
+      this.delectmodal=false;
+     
     },
     error:err=>{
       console.error('Error deleting organization', err);
@@ -66,4 +72,5 @@ editorganization(){
       console.log('No organization selected');
     }
 }
+
 }

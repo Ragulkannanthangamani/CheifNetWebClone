@@ -12,7 +12,9 @@ export class addorganizationservice{
     private baseurl =  'https://chiefnet-stg-api.yavar.in';
 
     constructor(private otpservice:otpservice,private http:HttpClient){}
-getorganization(organization:{organization:{name:string, description:string, uuid:string, client_email:string,client_mobile_no:string,client_address:string ,prisma_firewall:string}}):Observable<any>{
+getorganization(organization:{organization:{name:string, description:string, uuid:string, client_email:string,client_mobile_no:string,client_name:string,client_address:string ,prisma_firewall:string}}):Observable<any>{
+    console.log(organization,'confirm');
+    
     const AccessToken=this.otpservice.getAccessToken();   
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' })
     .set('Authorization', `${AccessToken}`); 

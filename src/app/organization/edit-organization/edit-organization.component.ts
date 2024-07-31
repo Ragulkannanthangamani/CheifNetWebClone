@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { organizationservice } from '../organization.service';
+
 @Component({
   selector: 'app-edit-organization',
   templateUrl: './edit-organization.component.html',
@@ -48,4 +49,30 @@ export class EditOrganizationComponent implements OnInit {
       console.log('organID not found in route parameters');
     }
   }
+  onsubmit(){
+    if(this.userform.valid){
+      const organid = this.routes.snapshot.paramMap.get('id');
+      const organidnum = Number(organid);
+      const organization ={
+        organization:{
+          name:this.userform.get('name')?.value,
+          description:this.userform.get('description')?.value,
+          uuid:this.userform.get('uuid')?.value,
+          client_email:this.userform.get('client_email')?.value,
+          client_mobile_no:this.userform.get('client_mobile_no')?.value,
+          client_name:this.userform.get('client_name')?.value,
+          client_address:this.userform.get('client_address')?.value,
+          prisma_firewall:this.userform.get('prisma_firewall')?.value
+        }
+      }
+  console.log(organization,'my');
+  this.organizationservice.saveorgan(organization,organidnum).subscribe( {
+      
+    next:Response=>{
+      console.log(Response);
+      this.route.navigate(['/organization']);
+    }
+  })
+  }
+}
 }
