@@ -66,6 +66,15 @@
     width: 10rem;
     border-radius: 4px;
   }
+  .device{
+    font-weight: 500;
+    margin-right: 50px;
+  }
+  .device:hover{
+    background-color: rgba(151, 190, 190, 0.685);
+    width: 10rem;
+    border-radius: 4px;
+  }
   .mi{
     padding-left: 0;
   }
@@ -83,4 +92,18 @@
 }
 .edit-btn{
   margin-right: 5px;
+}
+.table-container {
+  overflow-x: auto; 
+  white-space: nowrap; 
+}
+.my-table {
+  width: 100%; 
+  min-width: 600px; 
+  border-collapse: collapse;
+}
+.my-table td, .my-table th {
+  border: 1px solid rgb(255, 255, 255); 
+  padding: 8px; 
+  text-align: left; 
 }

@@ -9,6 +9,7 @@ import { EditComponent } from './edit/edit.component';
 import { OrganizationComponent } from './organization/organization.component';
 import { AddOrganizationComponent } from './organization/add-organization/add-organization.component';
 import { EditOrganizationComponent } from './organization/edit-organization/edit-organization.component';
+import { DevicesComponent } from './devices/devices.component';
 
 const routes: Routes = [
   // { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: 'updateuser/:id',component:EditComponent},
   { path:'organization',component:OrganizationComponent},
   { path:'AddOrganization',component:AddOrganizationComponent},
-  { path:'EditOrganization/:id',component: EditOrganizationComponent}
+  { path:'EditOrganization/:id',component: EditOrganizationComponent},
+  { path:'Devices',component:DevicesComponent}
  
 ];
 

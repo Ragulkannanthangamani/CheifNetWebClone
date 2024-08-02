@@ -1,0 +1,89 @@
+.sidebar{
+    background-color: rgb(173, 221, 221);
+    height: 30rem;
+    border-radius: 5px;
+  }
+  .organization{
+    font-weight: 500;
+    margin-right: 4px;
+  }
+  .organization:hover{
+    background-color: rgba(151, 190, 190, 0.685);
+    width: 10rem;
+    border-radius: 4px;
+    margin-left: 10px;
+  }
+  .users{
+    font-weight: 500;
+    margin-right: 60px;
+  }
+  .users:hover{
+    background-color: rgba(151, 190, 190, 0.685);
+    width: 10rem;
+    border-radius: 4px;
+    margin-left: 10px;
+  }
+  .device{
+    font-weight: 500;
+    margin-right: 50px;
+  }
+  .device:hover{
+    background-color: rgba(151, 190, 190, 0.685);
+    width: 10rem;
+    border-radius: 4px;
+    margin-left: 10px;
+  }
+  .topic{
+    margin-left: 15rem;
+    padding: 1rem;
+    margin-bottom: 0;
+  }
+  .card{
+    margin-bottom: 1rem;
+  }
+  
+    @keyframes spin {
+      /* to {
+        transform: rotate(360deg); */
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg);
+      }
+    }
+  
+    .add-btn{
+      color:black;
+      margin-right: 5px;
+    }
+  
+    .chiefnetimg{
+        padding-top: 11px;
+        padding-bottom: 8px;
+        margin-left: 2rem;
+    }
+    ul,ol{
+      list-style-type: none;
+    
+    }
+    li{
+      margin-right: 40px;
+     padding-top: 10px;
+     color: rgb(126, 119, 109);
+    }
+    .mi{
+        padding-left: 0;
+      }
+      .mi1{
+        padding-right: 0;
+      }
+      .burger-button{
+        border: none;
+        height: 2rem;
+        width: 2rem;
+        border-radius: 4px;
+    }
+    .burger-button:hover{
+        background-color: rgb(179, 252, 255);
+    }
+    .edit{
+        margin-right: 3px;
+       }

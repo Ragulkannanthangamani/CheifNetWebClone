@@ -15,6 +15,7 @@ import { EditComponent } from './edit/edit.component';
 import { OrganizationComponent } from './organization/organization.component';
 import { AddOrganizationComponent } from './organization/add-organization/add-organization.component';
 import { EditOrganizationComponent } from './organization/edit-organization/edit-organization.component';
+import { DevicesComponent } from './devices/devices.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { EditOrganizationComponent } from './organization/edit-organization/edit
     OrganizationComponent,
     AddOrganizationComponent,
     EditOrganizationComponent,
+    DevicesComponent,
     
   ],
   imports: [
