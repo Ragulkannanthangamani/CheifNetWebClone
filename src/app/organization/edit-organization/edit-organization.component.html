@@ -1,60 +1,115 @@
 <div class="body">
-    <p>-</p>
-    <div class="container">
-        <div class="card">
-            <h2 class="title">Add Organization</h2>
-            <form [formGroup]="userform" (ngSubmit)="onsubmit()">
-                <div class="row mb-3 label">
-                    <label for="name" class="col-sm-3 col-form-label">Name</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="name" formControlName="name">
-                    </div>
+    <div class="container mt-4">
+      <div class="card p-4 shadow-sm">
+        <h2 class="title mb-4">Add Organization</h2>
+        <form [formGroup]="userform" (ngSubmit)="onsubmit()">
+          <!-- Name Field -->
+          <div class="row mb-3">
+            <label for="name" class="col-sm-3 col-form-label label">Name</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="name" formControlName="name">
+              <div *ngIf="userform.get('name')?.touched && userform.get('name')?.invalid" class="text-danger">
+                Name is required
+              </div>
+            </div>
+          </div>
+  
+          <!-- Description Field -->
+          <div class="row mb-3">
+            <label for="Description" class="col-sm-3 col-form-label label">Description</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="Description" formControlName="description">
+            </div>
+          </div>
+  
+          <!-- UUID Field -->
+          <div class="row mb-3">
+            <label for="uuid" class="col-sm-3 col-form-label label">UUID</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="uuid" formControlName="uuid">
+            </div>
+          </div>
+  
+          <!-- Client Email Field -->
+          <div class="row mb-3">
+            <label for="client_email" class="col-sm-3 col-form-label label">Client Email</label>
+            <div class="col-sm-9">
+              <input type="email" class="form-control" id="client_email" formControlName="client_email">
+              <div *ngIf="userform.get('client_email')?.touched && userform.get('client_email')?.invalid" class="text-danger">
+                A valid email is required
+              </div>
+            </div>
+          </div>
+  
+          <!-- Client Mobile No Field -->
+          <div class="row mb-3">
+            <label for="client_mobile_no" class="col-sm-3 col-form-label label">Client Mobile-No</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="client_mobile_no" formControlName="client_mobile_no">
+              <div *ngIf="userform.get('client_mobile_no')?.touched && userform.get('client_mobile_no')?.invalid" class="text-danger">
+                A valid mobile number is required
+              </div>
+            </div>
+          </div>
+  
+          <!-- Client Name Field -->
+          <div class="row mb-3">
+            <label for="client_name" class="col-sm-3 col-form-label label">Client Name</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="client_name" formControlName="client_name">
+              <div *ngIf="userform.get('client_name')?.touched && userform.get('client_name')?.invalid" class="text-danger">
+                <div *ngIf="userform.get('client_name')?.errors?.['required']">
+                  Client Name is required.
                 </div>
-                <div class="row mb-3 label">
-                    <label for="Description" class="col-sm-3 col-form-label">Description</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="Description" formControlName="description">
-                    </div>
+                <div *ngIf="userform.get('client_name')?.errors?.['minlength']">
+                  Client Name must be at least {{ userform.get('client_name')?.errors?.['minlength.requiredLength'] }} characters long.
                 </div>
-                <div class="row mb-3 label">
-                    <label for="uuid" class="col-sm-3 col-form-label">UUID</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="uuid" formControlName="uuid">
-                    </div>
-                </div>
-                <div class="row mb-3 label">
-                    <label for="client_email" class="col-sm-3 col-form-label">Client Email</label>
-                    <div class="col-sm-9">
-                        <input type="email" class="form-control" id="client_email" formControlName="client_email">
-                    </div>
-                </div>
-                <div class="row mb-3 label">
-                    <label for="client_mobile_no" class="col-sm-3 col-form-label">Client Mobile-NO</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="client_mobile_no" formControlName="client_mobile_no">
-                    </div>
-                </div>
-                <div class="row mb-3 label">
-                    <label for="client_name" class="col-sm-3 col-form-label">Client Name</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="client_name" formControlName="client_name">
-                    </div>
-                </div>
-                <div class="row mb-3 label">
-                    <label for="client_address" class="col-sm-3 col-form-label">Client Address</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="client_address" formControlName="client_address">
-                    </div>
-                </div>
-                <div class="row mb-3 label">
-                    <label for="prisma_firewall" class="col-sm-3 col-form-label">Prisma Firewall</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="prisma_firewall" formControlName="prisma_firewall">
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary btn-sm submit">submit</button>
-                 
-            </form>
-        </div>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Client Address Field -->
+          <div class="row mb-3">
+            <label for="client_address" class="col-sm-3 col-form-label label">Client Address</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="client_address" formControlName="client_address">
+            </div>
+          </div>
+  
+          <!-- Prisma Firewall Field -->
+          <div class="row mb-3">
+            <label for="prisma_firewall" class="col-sm-3 col-form-label label">Prisma Firewall</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="prisma_firewall" formControlName="prisma_firewall">
+            </div>
+          </div>
+  
+          <!-- Submit Button -->
+          <div class="row">
+            <div class="col-sm-12 text-end">
+              <button type="submit" class="btn btn-primary btn-sm" [disabled]="userform.invalid">
+                <span *ngIf="isLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true" ></span>
+                            <span *ngIf="!isLoading">Submit</span>
+                            <span *ngIf="isLoading">Loading...</span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
-</div>
+  
+    <!-- Toast for Success Message -->
+    <div aria-live="polite" aria-atomic="true" class="position-relative">
+      <div class="toast-container position-fixed top-0 end-0 p-3">
+        <div id="successToast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="d-flex">
+            <div class="toast-body">
+              Organization added successfully!
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

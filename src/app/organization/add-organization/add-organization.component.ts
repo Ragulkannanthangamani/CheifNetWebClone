@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { addorganizationservice } from './add-organization.service';
 import { Router } from '@angular/router';
+import { Toast } from 'bootstrap';
 @Component({
   selector: 'app-add-organization',
   templateUrl: './add-organization.component.html',
@@ -10,6 +11,7 @@ import { Router } from '@angular/router';
 export class AddOrganizationComponent implements OnInit {
   userform:FormGroup
   successmessage:boolean=false;
+  isLoading:boolean=false;
 
   constructor(private fb:FormBuilder,private addorganizationservice:addorganizationservice,private route:Router){
     this.userform=this.fb.group({
@@ -28,6 +30,7 @@ export class AddOrganizationComponent implements OnInit {
   }
   onSubmit(): void {
     if (this.userform.valid) {
+      this.isLoading=true;
       console.log(this.userform.value,'submit');
       const organization={
         organization: {
@@ -48,15 +51,17 @@ console.log(organization);
     this.addorganizationservice.getorganization(organization).subscribe( {
       
     next:Response=>{
+      this.isLoading=true;
       console.log(Response);
-
-      this.successmessage=true;
+      this.showSuccessToast() ;
+     // this.successmessage=true;
       setTimeout(() => {
-        this.successmessage = false;
+      //  this.successmessage = false;
         this.route.navigate(['/organization'])
       }, 1000);
     },
     error:err=>{
+      this.isLoading=false;
       console.error('there might some error on ADD Organization',err)
     }
      
@@ -70,6 +75,15 @@ console.log(organization);
   get f() {
      return this.userform.controls;
      }
+     showSuccessToast() {
+      const toastElement = document.getElementById('successToast');
+      if (toastElement) {
+        const toast = new Toast(toastElement);
+        toast.show();
+      } else {
+        console.error('Toast element not found');
+      }
+    }
 }
 
 

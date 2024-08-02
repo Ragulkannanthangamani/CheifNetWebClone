@@ -81,3 +81,6 @@
 .burger-button:hover{
     background-color: rgb(179, 252, 255);
 }
+.edit-btn{
+  margin-right: 5px;
+}

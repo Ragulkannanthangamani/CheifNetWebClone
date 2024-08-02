@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { updateuserservice } from './updateuser.service';
 import { Router,ActivatedRoute } from '@angular/router';
+import { Toast } from 'bootstrap';
 
 @Component({
   selector: 'app-updateuser',
@@ -63,7 +64,10 @@ onsumit(){
     console.log(user);
     this.updateuserservice.createuser(user).subscribe({
        next:Response =>{
-       this.router.navigate(['/home-1'])
+        this.showSuccessToast();
+        setTimeout(() => {
+          this.router.navigate(['/home-1']);
+        }, 1000);
        },
        error:error =>{
         
@@ -72,5 +76,14 @@ onsumit(){
   }
 }
 
+showSuccessToast() {
+  const toastElement = document.getElementById('successToast');
+  if (toastElement) {
+    const toast = new Toast(toastElement);
+    toast.show();
+  } else {
+    console.error('Toast element not found');
+  }
+}
 
 }

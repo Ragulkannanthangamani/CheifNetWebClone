@@ -15,6 +15,8 @@ export class Home1Component implements OnInit {
   errorMessage: string | null = null;
   isLoading = true;
   issidebarvisible=true;
+  selectedUserId:string ='';
+  buttondisable:boolean=false;
   
   constructor(private home1service: home1service,private otpservice:otpservice,private router:Router,private user:updateuserservice){
 
@@ -50,8 +52,8 @@ export class Home1Component implements OnInit {
     this.router.navigate(['/updateuser']);
   }
 
-  onEdituser(id:string){
-    this.router.navigate(['/updateuser',id]);
+  onEdituser(){
+    this.router.navigate(['/updateuser',this.selectedUserId]);
 }
 
 logout(){
@@ -60,6 +62,23 @@ logout(){
 }
 toggleSidebar(){
   this.issidebarvisible=!this.issidebarvisible;
+   }
+  selectuser(id: string) {
+    this.selectedUserId = id;
+    this.buttondisable=true;
+  }
+  
+   deleteuser(){
+     this.home1service.deleteuser(this.selectedUserId).subscribe({
+      next:Response=>{
+        console.log('User deleted successfully', Response);
+      },
+      error:err=>{
+        console.error('Error deleting User', err);
+      }
+    
+    })
+   
    }
 }
 

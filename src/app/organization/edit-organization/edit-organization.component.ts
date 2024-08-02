@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { organizationservice } from '../organization.service';
-
+import { Toast } from 'bootstrap';
 @Component({
   selector: 'app-edit-organization',
   templateUrl: './edit-organization.component.html',
@@ -11,16 +11,17 @@ import { organizationservice } from '../organization.service';
 export class EditOrganizationComponent implements OnInit {
   userform: FormGroup
   organdata: any = '';
+  isLoading = false; 
   constructor(private fb: FormBuilder, private route: Router, private routes: ActivatedRoute, private organizationservice: organizationservice) {
     this.userform = this.fb.group({
       name: ['', Validators.required],
-      description: ['', Validators.required],
+      description: [null],
       uuid: ['', Validators.required],
-      client_email: ['', [Validators.required, Validators.email]],
-      client_mobile_no: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
-      client_name: ['', Validators.required],
-      client_address: ['', Validators.required],
-      prisma_firewall: ['', Validators.required]
+      client_email: ['', [Validators.required,Validators.email]],
+      client_mobile_no: [null, Validators.pattern('^[0-9]*$')],
+      client_name: ['',[Validators.required,Validators.minLength(3)]],
+      client_address: [null],
+      prisma_firewall: [null, Validators.required]
     })
   }
   ngOnInit(): void {
@@ -51,6 +52,7 @@ export class EditOrganizationComponent implements OnInit {
   }
   onsubmit(){
     if(this.userform.valid){
+      this.isLoading = true; 
       const organid = this.routes.snapshot.paramMap.get('id');
       const organidnum = Number(organid);
       const organization ={
@@ -69,10 +71,29 @@ export class EditOrganizationComponent implements OnInit {
   this.organizationservice.saveorgan(organization,organidnum).subscribe( {
       
     next:Response=>{
+      this.isLoading = true;
       console.log(Response);
-      this.route.navigate(['/organization']);
+      this.showSuccessToast();
+          setTimeout(() => {
+            this.route.navigate(['/organization']);
+          }, 1000);
+    },
+    error: () => {
+      this.isLoading = false;  
+      console.log('something happened in editing organization');
+      
     }
   })
+  }
+}
+
+showSuccessToast() {
+  const toastElement = document.getElementById('successToast');
+  if (toastElement) {
+    const toast = new Toast(toastElement);
+    toast.show();
+  } else {
+    console.error('Toast element not found');
   }
 }
 }

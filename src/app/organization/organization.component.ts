@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { organizationservice } from './organization.service';
+import { Toast } from 'bootstrap';
 
 @Component({
   selector: 'app-organization',
@@ -14,7 +15,7 @@ export class OrganizationComponent implements OnInit {
   pagination: any = {};
   selectedOrganizationId: string = '';
   buttondisable:boolean=false;
-  delectmodal:boolean=true;
+  successmessage:boolean=false;
 
   constructor(private router:Router,private organizationservice:organizationservice){}
   
@@ -40,6 +41,7 @@ export class OrganizationComponent implements OnInit {
     },
     error:err=>{
       console.log('something gone mistake',err);
+     
     }
  })
   }
@@ -57,13 +59,20 @@ deleteOrganization(){
     next:Response=>{
       console.log('Organization deleted successfully', Response);
       this.fetchdata(); 
-      this.delectmodal=false;
+      
      
     },
     error:err=>{
       console.error('Error deleting organization', err);
+      // this.successmessage=true;
+      // setTimeout(() => {
+      //   this.successmessage = false;
+      // }, 1000);
+      this.showdeleteToast();
     }
+    
   })
+ 
 }
 editorganization(){
     if (this.selectedOrganizationId) {
@@ -73,4 +82,13 @@ editorganization(){
     }
 }
 
+showdeleteToast() {
+  const toastElement = document.getElementById('deleteToast');
+  if (toastElement) {
+    const toast = new Toast(toastElement);
+    toast.show();
+  } else {
+    console.error('Toast element not found');
+  }
+}
 }
