@@ -103,7 +103,7 @@
   border-collapse: collapse;
 }
 .my-table td, .my-table th {
-  border: 1px solid rgb(255, 255, 255); 
+  border: 1px solid rgb(233, 233, 233); 
   padding: 8px; 
   text-align: left; 
 }

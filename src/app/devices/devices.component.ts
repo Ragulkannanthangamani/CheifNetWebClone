@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Devicesservice } from './devices.service';
 @Component({
   selector: 'app-devices',
   templateUrl: './devices.component.html',
@@ -7,9 +8,16 @@ import { Router } from '@angular/router';
 })
 export class DevicesComponent implements OnInit {
   issidebarvisible=true;
-  constructor(private router:Router){}
+  devices:any[]=[];
+  errorMessage: string | null = null;
+  isLoading = true;
+  selectedDeviceId:string ='';
+  buttondisable:boolean=false;
+  
+
+  constructor(private router:Router,private deviceservice:Devicesservice){}
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+   this.fetchdata();
   }
 
   logout(){
@@ -21,6 +29,26 @@ export class DevicesComponent implements OnInit {
   }
 
  fetchdata(){
-  this
+this.deviceservice.getdevice().subscribe({
+  next:Response=>{
+    console.log('devices retrived',Response);
+    this.devices= Response.devices
+    this.isLoading=false;
+    const devicejson= JSON.stringify(Response.devices);
+    this.deviceservice.savelocalstorage(devicejson);
+  },
+  error:err=>{
+    console.error('Error fetching data', err);
+        this.errorMessage = 'Error fetching data. Please try again later.';
+        this.isLoading = false;
+  }
+})
  }
+ selectDevice(id: string) {
+  this.selectedDeviceId = id;
+  this.buttondisable=true;
+}
+editdevice(){
+  this.router.navigate(['/Editdevice',this.selectedDeviceId]);
+}
 }

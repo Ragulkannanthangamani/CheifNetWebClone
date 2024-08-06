@@ -1,0 +1,33 @@
+*{
+   
+    box-sizing: border-box;
+}
+.card{
+    width: 35rem;  
+    background-color: transparent;    
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0px;
+}
+.title{
+    margin-left: 8rem;
+    padding: 5px;
+    color: black;
+
+}
+.body {
+    background-image: url('./../../assets/home-1\ page.jpg'); 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center; 
+    height: 100vh; 
+    margin: 0; 
+   
+  }
+  .label{
+    padding-left: 10px;
+    color: black;
+  }

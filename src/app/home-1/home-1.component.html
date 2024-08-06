@@ -59,8 +59,7 @@
       <div class=" home-container">
         <div *ngIf="isLoading" class="spinner"></div>
         <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
-        <div *ngIf="!isLoading && !errorMessage">
-          <div>
+        <div *ngIf="!isLoading && !errorMessage"><div>
               
             <div class="d-flex justify-content-between align-items-center" >
               <h2 class="topic">Network Oschestration Platform (LGB demo)</h2>
