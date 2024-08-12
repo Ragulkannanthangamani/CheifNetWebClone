@@ -4,6 +4,8 @@ import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Devicesservice } from '../devices.service';
 import { editdeviceservice } from './edit-device.service';
+import { Router } from '@angular/router';
+import { Toast } from 'bootstrap';
 @Component({
   selector: 'app-edit-device',
   templateUrl: './edit-device.component.html',
@@ -12,8 +14,10 @@ import { editdeviceservice } from './edit-device.service';
 export class EditDeviceComponent implements OnInit{
   userform: FormGroup;
   devicedata:any='';
+  errormessage: string | null = null;
+  showToast: boolean = false;
 
-  constructor(private fb:FormBuilder,private routes:ActivatedRoute,private deviceservice:Devicesservice,private editdeviceservice:editdeviceservice){
+  constructor(private fb:FormBuilder,private routes:ActivatedRoute,private deviceservice:Devicesservice,private editdeviceservice:editdeviceservice,private router:Router){
     this.userform = this.fb.group({
       name: ['', Validators.required],
       organization_id: [0, Validators.required],
@@ -43,14 +47,19 @@ export class EditDeviceComponent implements OnInit{
           this.userform.patchValue(this.devicedata);
 
         } else {
+          this.errormessage='Device not found check further'
           console.log('device is not found');
+          this.showToast=true;
+          setTimeout(() => {
+            this.showToast = false;
+          }, 4000);
         }
   }else {
     console.log('devicelist is not found in localstorage');
 
   }
 }else {
-  console.log('organID not found in route parameters');
+  console.log('DeviceID not found in route parameters');
 }
   }
 
@@ -73,7 +82,29 @@ export class EditDeviceComponent implements OnInit{
         }
       }
       console.log('submit',device);
-      this.editdeviceservice.SaveEditDevice(device)
+      this.editdeviceservice.SaveEditDevice(device,deviceidnum).subscribe({
+        next:Response=>{
+          console.log('Edited device saved successfully');
+          this.showSuccessToast();
+          setTimeout(() => {
+            this.router.navigate(['/Devices']);
+          }, 1000);
+          
+        },
+        error: () => {
+          console.log('something happened in editing organization');
+        }
+      })
+    }
+  }
+
+  showSuccessToast() {
+    const toastElement = document.getElementById('successToast');
+    if (toastElement) {
+      const toast = new Toast(toastElement);
+      toast.show();
+    } else {
+      console.error('Toast element not found');
     }
   }
 }

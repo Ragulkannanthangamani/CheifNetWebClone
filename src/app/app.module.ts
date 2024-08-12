@@ -17,6 +17,7 @@ import { AddOrganizationComponent } from './organization/add-organization/add-or
 import { EditOrganizationComponent } from './organization/edit-organization/edit-organization.component';
 import { DevicesComponent } from './devices/devices.component';
 import { EditDeviceComponent } from './devices/edit-device/edit-device.component';
+import { AddDevicesComponent } from './devices/add-devices/add-devices.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { EditDeviceComponent } from './devices/edit-device/edit-device.component
     EditOrganizationComponent,
     DevicesComponent,
     EditDeviceComponent,
+    AddDevicesComponent,
     
   ],
   imports: [

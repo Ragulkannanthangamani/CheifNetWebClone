@@ -1,12 +1,13 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import {  Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { otpservice } from "./home/otp.service";
 @Injectable({
     providedIn:'root'
 })
 export class athuservice {
     private baseurl =  'https://chiefnet-stg-api.yavar.in';
-    constructor(private http :HttpClient ){
+    constructor(private http :HttpClient,private otpservice:otpservice ){
 
     }
 
@@ -15,5 +16,9 @@ export class athuservice {
          const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         return this.http.post<any>(apiurl,  user ,{ headers });
       }
-}
 
+      isAuthenticated(): boolean {
+  
+        return !!this.otpservice.getAccessToken(); 
+      }
+    }

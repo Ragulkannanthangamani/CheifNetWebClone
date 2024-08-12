@@ -84,4 +84,11 @@ if (devicejson !== null) {
   return null;
 }
 }
+
+Delectdevice(ids:string):Observable<any>{
+  const AccessToken=this.otpservice.getAccessToken();
+  let params = new HttpParams().set('ids', ids);
+  const headers = new HttpHeaders()
+  .set('Authorization', `${AccessToken}`);
+return this.http.delete<any>(`${this.baseurl}/v1/devices`,{headers,params})}
 }

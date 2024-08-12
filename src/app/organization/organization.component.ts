@@ -23,7 +23,7 @@ export class OrganizationComponent implements OnInit {
    this.fetchdata();
   }
   logout(){
-    localStorage.clear;
+    localStorage.clear();
     this.router.navigate(['/login']);
   }
  

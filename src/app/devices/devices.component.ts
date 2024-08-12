@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Devicesservice } from './devices.service';
+import { Toast } from 'bootstrap';
 @Component({
   selector: 'app-devices',
   templateUrl: './devices.component.html',
@@ -21,7 +22,7 @@ export class DevicesComponent implements OnInit {
   }
 
   logout(){
-    localStorage.clear;
+    localStorage.clear();
     this.router.navigate(['/login']);
   }
   toggleSidebar(){
@@ -50,5 +51,41 @@ this.deviceservice.getdevice().subscribe({
 }
 editdevice(){
   this.router.navigate(['/Editdevice',this.selectedDeviceId]);
+}
+
+adddevice(){
+  this.router.navigate(['/AddDevices']);
+}
+
+Delectdevice(){
+this.deviceservice.Delectdevice(this.selectedDeviceId).subscribe({
+  next:Response=>{
+    console.log('Organization deleted successfully', Response);
+    this.showdeleteToast();
+    this.fetchdata(); 
+  },
+  error:err=>{
+    console.error('Error deleting organization', err);
+   this.showdeleteErrToast();
+  }
+})
+}
+showdeleteToast() {
+  const toastElement = document.getElementById('deleteToast');
+  if (toastElement) {
+    const toast = new Toast(toastElement);
+    toast.show();
+  } else {
+    console.error('Toast element not found');
+  }
+}
+showdeleteErrToast() {
+  const toastElement = document.getElementById('deleteErrToast');
+  if (toastElement) {
+    const toast = new Toast(toastElement);
+    toast.show();
+  } else {
+    console.error('Toast element not found');
+  }
 }
 }

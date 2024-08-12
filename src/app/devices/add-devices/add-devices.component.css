@@ -1,0 +1,42 @@
+*{
+   
+    box-sizing: border-box;
+}
+.card{
+    width: 35rem;  
+    background-color: transparent;    
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0px;
+}
+.title{
+    margin-left: 8rem;
+    padding: 3px;
+    color: whitesmoke;
+
+}
+.form-label{
+    color: rgb(175, 156, 156)
+}
+
+.style{
+    border-style: solid;
+    border: none;
+}
+.style1{
+    border-style: solid;
+    border: none;
+    max-width: 230px;
+}
+.body {
+    background-image: url('./../../assets/Add\ Device\ Component.jpg'); 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center; 
+    height: 100vh; 
+    margin: 0; 
+   
+  }

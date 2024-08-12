@@ -57,7 +57,7 @@ export class Home1Component implements OnInit {
 }
 
 logout(){
-  localStorage.clear;
+  localStorage.clear();
   this.router.navigate(['/login']);
 }
 toggleSidebar(){
