@@ -3,7 +3,7 @@ import { FormGroup, Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Devicesservice } from '../devices.service';
-import { editdeviceservice } from './edit-device.service';
+import { Device, editdeviceservice } from './edit-device.service';
 import { Router } from '@angular/router';
 import { Toast } from 'bootstrap';
 @Component({
@@ -35,29 +35,37 @@ export class EditDeviceComponent implements OnInit{
     const deviceid = this.routes.snapshot.paramMap.get('id');
     if(deviceid){
       const deviceidnum = Number(deviceid);
-      const devicelist = this.deviceservice.getlocalstorage();
-      console.log(devicelist);
+      // const devicelist = this.deviceservice.getlocalstorage();
+      // console.log(devicelist);
       console.log(deviceidnum);
+      this.editdeviceservice.GetDevicebyId(deviceidnum).subscribe({
+        next:(Response:Device)=>{
+          this.devicedata=Response;
+          console.log('devices',this.devicedata);
 
-      if (devicelist) {
-        this.devicedata = devicelist.find((devicelist: any) => devicelist.id === deviceidnum);
-
-        if (this.devicedata) {
-          console.log('Device found:', this.devicedata);
-          this.userform.patchValue(this.devicedata);
-
-        } else {
+          
+          if (this.devicedata) {
+            console.log('Device found:', this.devicedata);
+            this.userform.patchValue(this.devicedata);
+    
+          } 
+        },
+        error:err=>{
           this.errormessage='Device not found check further'
-          console.log('device is not found');
           this.showToast=true;
           setTimeout(() => {
             this.showToast = false;
           }, 4000);
         }
-  }else {
-    console.log('devicelist is not found in localstorage');
+      })
 
-  }
+      // if (devicelist) {
+      //   this.devicedata = devicelist.find((devicelist: any) => devicelist.id === deviceidnum);
+       
+  // }else {
+  //   console.log('devicelist is not found in localstorage');
+
+  // }
 }else {
   console.log('DeviceID not found in route parameters');
 }

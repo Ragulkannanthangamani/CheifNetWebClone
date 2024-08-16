@@ -60,13 +60,15 @@ export class Devicesservice {
  private baseurl =  'https://chiefnet-stg-api.yavar.in';
 constructor(private otpservice:otpservice,private http:HttpClient){}
 
-getdevice():Observable<ApiResponse>{
+getdevice(page:number,perPage:number):Observable<ApiResponse>{
     const AccessToken=this.otpservice.getAccessToken(); 
     const headers = new HttpHeaders()
     .set('Authorization', `${AccessToken}`);
 
     let params = new HttpParams();
     params = params.append('visible_columns', 'location,uuid,state,type,organization,is_online,os_version')
+                   .set('page',page.toString())
+                   .set('perPage',perPage.toString());
 return this.http.get<ApiResponse>(`${this.baseurl}/v1/devices`, { headers:headers,params });
 }
   

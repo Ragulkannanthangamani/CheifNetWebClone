@@ -14,11 +14,13 @@ export class DevicesComponent implements OnInit {
   isLoading = true;
   selectedDeviceId:string ='';
   buttondisable:boolean=false;
+  currentPage=1;
+  perPage=10;
+  pagination: any = {}; 
   
-
   constructor(private router:Router,private deviceservice:Devicesservice){}
   ngOnInit(): void {
-   this.fetchdata();
+   this.fetchdata(this.currentPage);
   }
 
   logout(){
@@ -29,11 +31,15 @@ export class DevicesComponent implements OnInit {
     this.issidebarvisible=!this.issidebarvisible;
   }
 
- fetchdata(){
-this.deviceservice.getdevice().subscribe({
+ fetchdata(page:number):void{
+this.deviceservice.getdevice(page,this.perPage).subscribe({
   next:Response=>{
     console.log('devices retrived',Response);
+    console.log('device pagination',Response.pagination);
+    
     this.devices= Response.devices
+    this.pagination = Response.pagination; 
+    this.currentPage = page; 
     this.isLoading=false;
     const devicejson= JSON.stringify(Response.devices);
     this.deviceservice.savelocalstorage(devicejson);
@@ -45,6 +51,25 @@ this.deviceservice.getdevice().subscribe({
   }
 })
  }
+
+//  goToPage(page: number): void {
+//   if (page >= 1 && page <= this.pagination.total_pages) {
+//     this.fetchdata(page);
+//   }
+// }
+
+nextPage(): void {
+  if (this.pagination.next_page !== null) {
+    this.fetchdata(this.pagination.next_page);
+  }
+}
+
+
+prevPage(): void {
+  if (this.pagination.prev_page !== null) {
+    this.fetchdata(this.pagination.prev_page);
+  }
+}
  selectDevice(id: string) {
   this.selectedDeviceId = id;
   this.buttondisable=true;
@@ -62,7 +87,7 @@ this.deviceservice.Delectdevice(this.selectedDeviceId).subscribe({
   next:Response=>{
     console.log('Organization deleted successfully', Response);
     this.showdeleteToast();
-    this.fetchdata(); 
+    this.fetchdata(this.currentPage); 
   },
   error:err=>{
     console.error('Error deleting organization', err);

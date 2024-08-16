@@ -17,23 +17,27 @@ export class Home1Component implements OnInit {
   issidebarvisible=true;
   selectedUserId:string ='';
   buttondisable:boolean=false;
+  currentPage=1;
+  perPage=10;
+  
   
   constructor(private home1service: home1service,private otpservice:otpservice,private router:Router,private user:updateuserservice){
 
   }
 
   ngOnInit(): void {
-    this.fetchdata();
+    this.fetchdata(this.currentPage);
 
   
   };
 
-  fetchdata(){
-    this.home1service.getUsers().subscribe({
+  fetchdata(page:number){
+    this.home1service.getUsers(page,this.perPage).subscribe({
 
       next:(response)=>{
                     this.users=response.users;
                     this.pagination=response.pagination;
+                    this.currentPage=page;
                     this.isLoading=false;
                     console.log(response);
                     const userjson= JSON.stringify(response.users);
@@ -47,6 +51,19 @@ export class Home1Component implements OnInit {
       
 
     })
+  }
+
+  nextPage(): void {
+    if (this.pagination.next_page !== null) {
+      this.fetchdata(this.pagination.next_page);
+    }
+  }
+  
+  
+  prevPage(): void {
+    if (this.pagination.prev_page !== null) {
+      this.fetchdata(this.pagination.prev_page);
+    }
   }
   onclicked(){
     this.router.navigate(['/updateuser']);

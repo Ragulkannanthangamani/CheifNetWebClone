@@ -12,6 +12,9 @@ export class EditOrganizationComponent implements OnInit {
   userform: FormGroup
   organdata: any = '';
   isLoading = false; 
+  errormessage: string | null = null;
+  showToast: boolean = false;
+
   constructor(private fb: FormBuilder, private route: Router, private routes: ActivatedRoute, private organizationservice: organizationservice) {
     this.userform = this.fb.group({
       name: ['', Validators.required],
@@ -41,6 +44,11 @@ export class EditOrganizationComponent implements OnInit {
 
         } else {
           console.log('organization is not found');
+          this.errormessage='Organization not found check further'
+          this.showToast=true;
+          setTimeout(() => {
+            this.showToast = false;
+          }, 4000);
         }
       } else {
         console.log('organizationlist is not found in localstorage');

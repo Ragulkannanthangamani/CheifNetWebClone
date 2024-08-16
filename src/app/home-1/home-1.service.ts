@@ -48,7 +48,7 @@ export class home1service{
 
     constructor(private http:HttpClient ,private otpservice:otpservice){
  }
- getUsers(): Observable<ApiResponse> {
+ getUsers(page:number,perPage:number): Observable<ApiResponse> {
   const refreshtoken=this.otpservice.getRefreshToken();
   const AccessToken=this.otpservice.getAccessToken();
   console.log(refreshtoken);
@@ -64,7 +64,8 @@ export class home1service{
 
     // params = params.append('q', 'Prakash')
     params = params.append('visible_columns', 'name,email,role')
-
+                    .set('page',page.toString())
+                    .set('perPage',perPage.toString());
 
     console.log(params, 'logging params');
  return this.http.get<ApiResponse>(`${this.baseurl}/v1/users`, { headers:headers,params });

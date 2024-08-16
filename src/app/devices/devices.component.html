@@ -70,11 +70,11 @@
                     Devices
                             <div>
                           
-                              <button type="submit" class="btn btn-success btn-sm edit"data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Devices" (click)="editdevice()"[disabled]="!buttondisable">
+                              <button type="submit" class="btn btn-success btn-sm edit" style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Devices" (click)="editdevice()"[disabled]="!buttondisable">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="15px" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M441 58.9L453.1 71c9.4 9.4 9.4 24.6 0 33.9L424 134.1 377.9 88 407 58.9c9.4-9.4 24.6-9.4 33.9 0zM209.8 256.2L344 121.9 390.1 168 255.8 302.2c-2.9 2.9-6.5 5-10.4 6.1l-58.5 16.7 16.7-58.5c1.1-3.9 3.2-7.5 6.1-10.4zM373.1 25L175.8 222.2c-8.7 8.7-15 19.4-18.3 31.1l-28.6 100c-2.4 8.4-.1 17.4 6.1 23.6s15.2 8.5 23.6 6.1l100-28.6c11.8-3.4 22.5-9.7 31.1-18.3L487 138.9c28.1-28.1 28.1-73.7 0-101.8L474.9 25C446.8-3.1 401.2-3.1 373.1 25zM88 64C39.4 64 0 103.4 0 152V424c0 48.6 39.4 88 88 88H360c48.6 0 88-39.4 88-88V312c0-13.3-10.7-24-24-24s-24 10.7-24 24V424c0 22.1-17.9 40-40 40H88c-22.1 0-40-17.9-40-40V152c0-22.1 17.9-40 40-40H200c13.3 0 24-10.7 24-24s-10.7-24-24-24H88z"/></svg>
                               </button>
                               <button class="btn btn-info btn-sm add-btn"  data-bs-toggle="tooltip" data-bs-placement="top" title="Add Devices" (click)="adddevice()" >Add <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M64 80c-8.8 0-16 7.2-16 16V416c0 8.8 7.2 16 16 16H384c8.8 0 16-7.2 16-16V96c0-8.8-7.2-16-16-16H64zM0 96C0 60.7 28.7 32 64 32H384c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zM200 344V280H136c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V168c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H248v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z"/></svg></button>
-                              <button type="button" class="btn btn-danger btn-sm delect" data-bs-toggle="modal" data-bs-target="#staticBackdrop" [disabled]="!buttondisable">
+                              <button type="button" class="btn btn-danger btn-sm delect" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#staticBackdrop" [disabled]="!buttondisable">
                                 <svg xmlns="http://www.w3.org/2000/svg"  height="21px" viewBox="0 0 576 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M112 48a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm40 304l0 128c0 17.7-14.3 32-32 32s-32-14.3-32-32l0-223.1L59.4 304.5c-9.1 15.1-28.8 20-43.9 10.9s-20-28.8-10.9-43.9l58.3-97c17.4-28.9 48.6-46.6 82.3-46.6l29.7 0c33.7 0 64.9 17.7 82.3 46.6l44.9 74.7c-16.1 17.6-28.6 38.5-36.6 61.5c-1.9-1.8-3.5-3.9-4.9-6.3L232 256.9 232 480c0 17.7-14.3 32-32 32s-32-14.3-32-32l0-128-16 0zm136 16a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm224 0c0-8.8-7.2-16-16-16l-128 0c-8.8 0-16 7.2-16 16s7.2 16 16 16l128 0c8.8 0 16-7.2 16-16z"/></svg>
                               </button>
 
@@ -121,7 +121,7 @@
                         <tbody>
                           <tr *ngFor="let device of devices">
                             <td>
-                              <input type="radio" name="selectedDevice" (click)="selectDevice(device.id)" >
+                              <input class="form-check-input" style="cursor: pointer;" type="radio" name="selectedDevice" (click)="selectDevice(device.id)" >
                             </td>
                             <td>{{device.location}}</td>
                             <td>{{device.name }}</td>
@@ -133,6 +133,20 @@
                           </tr>
                         </tbody>
                       </table>
+
+                      <div *ngIf="pagination.total_pages > 1" class="pagination-wrapper">
+                          <div class="pagination-controls">
+                            <button (click)="prevPage()" class="btn b1 " [disabled]="pagination.is_first_page">
+                              <svg xmlns="http://www.w3.org/2000/svg" height="18"  viewBox="0 0 512 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M512 256A256 256 0 1 0 0 256a256 256 0 1 0 512 0zM116.7 244.7l112-112c4.6-4.6 11.5-5.9 17.4-3.5s9.9 8.3 9.9 14.8l0 64 96 0c17.7 0 32 14.3 32 32l0 32c0 17.7-14.3 32-32 32l-96 0 0 64c0 6.5-3.9 12.3-9.9 14.8s-12.9 1.1-17.4-3.5l-112-112c-6.2-6.2-6.2-16.4 0-22.6z"/></svg>
+                            </button>
+                            <span>Page {{ currentPage }} of {{ pagination.total_pages }}</span>
+                            <button (click)="nextPage()" class="btn b1" [disabled]="pagination.is_last_page">
+                              <svg xmlns="http://www.w3.org/2000/svg" height="18"  viewBox="0 0 512 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zm395.3 11.3l-112 112c-4.6 4.6-11.5 5.9-17.4 3.5s-9.9-8.3-9.9-14.8l0-64-96 0c-17.7 0-32-14.3-32-32l0-32c0-17.7 14.3-32 32-32l96 0 0-64c0-6.5 3.9-12.3 9.9-14.8s12.9-1.1 17.4 3.5l112 112c6.2 6.2 6.2 16.4 0 22.6z"/></svg>
+                            </button>
+                          </div>
+                        </div>
+                     </div>
+
                 </div>
               </div>
             </div>
@@ -166,6 +180,6 @@
             </div>
           </div>
         </div>
-      </div>
+    
       
   

@@ -47,13 +47,15 @@ export class organizationservice {
     private organizationlist ='organizationlist';
     private baseurl =  'https://chiefnet-stg-api.yavar.in';
 constructor(private otpservice:otpservice,private http:HttpClient){}
-getorganization():Observable< ApiResponse>{
+getorganization(page:number,perPage:number):Observable< ApiResponse>{
     const AccessToken=this.otpservice.getAccessToken();
     const headers = new HttpHeaders()
     .set('Authorization', `${AccessToken}`);
 
     let params = new HttpParams();
     params = params.append('visible_columns', 'Name,UUID,Device cont,Provisioned devices count,Prisma Servers,Client name,client email,client phone,Client Address')
+                   .set('page',page.toString())
+                   .set('perPage',perPage.toString());
     console.log(params, 'logging params');
     return this.http.get< ApiResponse>(`${this.baseurl}/v1/organizations`, { headers:headers,params });
 

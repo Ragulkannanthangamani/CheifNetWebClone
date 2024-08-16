@@ -107,3 +107,14 @@
   padding: 8px; 
   text-align: left; 
 }
+
+.b1{
+  margin-bottom: 10px;
+  border: none;
+}
+
+
+.pagination-wrapper {
+  display: flex;
+  justify-content: center; /* Center the content horizontally */
+}

@@ -16,11 +16,13 @@ export class OrganizationComponent implements OnInit {
   selectedOrganizationId: string = '';
   buttondisable:boolean=false;
   successmessage:boolean=false;
+  currentPage=1;
+  perPage=10;
 
   constructor(private router:Router,private organizationservice:organizationservice){}
   
   ngOnInit(): void {
-   this.fetchdata();
+   this.fetchdata(this.currentPage);
   }
   logout(){
     localStorage.clear();
@@ -30,12 +32,13 @@ export class OrganizationComponent implements OnInit {
   toggleSidebar(){
  this.issidebarvisible=!this.issidebarvisible;
   }
-  fetchdata(){
-  this.organizationservice.getorganization().subscribe({
+  fetchdata(page:number){
+  this.organizationservice.getorganization(page,this.perPage).subscribe({
     next:Response =>{
       console.log(Response);
       this.organizations= Response.organizations;
       this.pagination=Response.pagination;
+      this.currentPage=page;
       const userjson= JSON.stringify(Response.organizations);
       this.organizationservice.savelocalstorage(userjson);
     },
@@ -44,6 +47,19 @@ export class OrganizationComponent implements OnInit {
      
     }
  })
+  }
+
+  nextPage(): void {
+    if (this.pagination.next_page !== null) {
+      this.fetchdata(this.pagination.next_page);
+    }
+  }
+  
+  
+  prevPage(): void {
+    if (this.pagination.prev_page !== null) {
+      this.fetchdata(this.pagination.prev_page);
+    }
   }
 onclicked(){
   this.router.navigate(['/AddOrganization']);
@@ -58,7 +74,7 @@ deleteOrganization(){
   this.organizationservice.deleteOrganization( this.selectedOrganizationId).subscribe({
     next:Response=>{
       console.log('Organization deleted successfully', Response);
-      this.fetchdata(); 
+      this.fetchdata(this.currentPage); 
       
      
     },

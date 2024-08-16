@@ -107,3 +107,20 @@
         padding: 8px; 
         text-align: left; 
       }
+
+      .b1{
+        border: none;
+      }
+      .pagination-wrapper {
+        display: flex;
+        justify-content: center; /* Center the content horizontally */
+      }
+      
+      .pagination-controls {
+        display: flex;
+        align-items: center; /* Center items vertically */
+      }
+      
+      .btn {
+        margin: 0 5px; /* Adjust spacing between buttons if needed */
+      }

@@ -13,6 +13,9 @@ export class EditComponent implements OnInit {
  successmessage:boolean=false;
   userdata:any='';
   isloading:boolean= false;
+  errormessage: string | null = null;
+  showToast: boolean = false;
+
   constructor(private route:Router, private home1service:home1service,private routes :ActivatedRoute,private fb:FormBuilder){
     this.userform = this.fb.group({
       id: [''],
@@ -39,8 +42,14 @@ export class EditComponent implements OnInit {
         this .userform.patchValue(this .userdata);
         
       }else{
-        console.log('User is not found');
+        this.errormessage='User not found check further'
+        console.log('user is not found');
+        this.showToast=true;
+        setTimeout(() => {
+          this.showToast = false;
+        }, 4000);
       }
+      
       }else{
         console.log('Userlist is not found in localstorage');
     }
