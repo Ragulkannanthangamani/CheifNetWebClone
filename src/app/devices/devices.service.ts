@@ -73,7 +73,7 @@ return this.http.get<ApiResponse>(`${this.baseurl}/v1/devices`, { headers:header
 }
   
 savelocalstorage(devicelist:any):void{
-  console.log(devicelist);
+  // console.log(devicelist);
    localStorage.setItem(this.devicelist,devicelist);
 }
 

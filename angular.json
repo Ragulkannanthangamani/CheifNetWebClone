@@ -37,9 +37,8 @@
               }
             ],
             "styles": [
-             "node_modules/@ng-select/ng-select/themes/default.theme.css",
+              "node_modules/@ng-select/ng-select/themes/default.theme.css",
               "src/styles.css"
-              
             ],
             "scripts": []
           },
@@ -97,10 +96,7 @@
               }
             ],
             "styles": [
-       
               "src/styles.css"
-              
-            
             ],
             "scripts": []
           }
@@ -109,6 +105,9 @@
     }
   },
   "cli": {
-    "analytics": "e9bd6af2-9357-49a5-a92e-6e9218fabb11"
+    "analytics": "e9bd6af2-9357-49a5-a92e-6e9218fabb11",
+    "schematicCollections": [
+      "@ngrx/schematics"
+    ]
   }
 }

@@ -18,6 +18,10 @@ import { EditOrganizationComponent } from './organization/edit-organization/edit
 import { DevicesComponent } from './devices/devices.component';
 import { EditDeviceComponent } from './devices/edit-device/edit-device.component';
 import { AddDevicesComponent } from './devices/add-devices/add-devices.component';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './devices/AppStatus/app.status';
+import { metaReducers } from './devices/reducers';
+// import { reducers, metaReducers } from './devices/reducers';
 
 @NgModule({
   declarations: [
@@ -41,7 +45,15 @@ import { AddDevicesComponent } from './devices/add-devices/add-devices.component
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
-    NgSelectModule
+    NgSelectModule,
+    StoreModule.forRoot(reducers, {
+      // metaReducers,
+      runtimeChecks: {
+        strictStateImmutability: false,
+        strictActionImmutability: false,
+      }      
+    })
+    
   ],
   providers: [provideHttpClient()],
   bootstrap: [AppComponent]
