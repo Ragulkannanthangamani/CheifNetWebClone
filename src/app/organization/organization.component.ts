@@ -18,7 +18,7 @@ export class OrganizationComponent implements OnInit {
   successmessage:boolean=false;
   currentPage=1;
   perPage=10;
-
+  mydisable:boolean=false;
   constructor(private router:Router,private organizationservice:organizationservice){}
   
   ngOnInit(): void {
@@ -37,6 +37,7 @@ export class OrganizationComponent implements OnInit {
     next:Response =>{
       console.log(Response);
       this.organizations= Response.organizations;
+      
       this.pagination=Response.pagination;
       this.currentPage=page;
       const userjson= JSON.stringify(Response.organizations);
@@ -64,11 +65,18 @@ export class OrganizationComponent implements OnInit {
 onclicked(){
   this.router.navigate(['/AddOrganization']);
 }
-selectOrganization(id: string) {
+selectOrganization(id: string,org:number) {
   this.selectedOrganizationId = id;
+  console.log(org);
+  
   this.buttondisable=true
+  if(org !== 0){
+     this.mydisable = true;
+  } else{
+    this.mydisable = false;
+  }
+  
 }
-
 deleteOrganization(){
  
   this.organizationservice.deleteOrganization( this.selectedOrganizationId).subscribe({

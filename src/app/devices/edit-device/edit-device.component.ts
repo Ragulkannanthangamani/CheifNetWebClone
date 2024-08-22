@@ -6,7 +6,7 @@ import { Devicesservice } from '../devices.service';
 import { Device, editdeviceservice } from './edit-device.service';
 import { Router } from '@angular/router';
 import { Toast } from 'bootstrap';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 
 @Component({
@@ -19,7 +19,6 @@ export class EditDeviceComponent implements OnInit{
   devicedata:any='';
   errormessage: string | null = null;
   showToast: boolean = false;
-
 
   constructor(private fb:FormBuilder,private routes:ActivatedRoute,private deviceservice:Devicesservice,private editdeviceservice:editdeviceservice,private router:Router){
     this.userform = this.fb.group({
@@ -34,9 +33,11 @@ export class EditDeviceComponent implements OnInit{
       incharge_mobile_no: [null, Validators.pattern('^[0-9]*$')],
       description: ['']
     });
-
+    
   }
+  
   ngOnInit(): void {
+     
     const deviceid = this.routes.snapshot.paramMap.get('id');
     if(deviceid){
       const deviceidnum = Number(deviceid);

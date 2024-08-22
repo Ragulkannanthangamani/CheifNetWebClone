@@ -118,3 +118,57 @@
   display: flex;
   justify-content: center; /* Center the content horizontally */
 }
+
+.success-btn {
+  background-color: #28a745; 
+  color: white; 
+  border: none; 
+  height: 32px;
+  width: 40px;
+  font-size: 16px; 
+  border-radius: 5px; 
+  cursor: pointer; 
+  transition: background-color 0.3s ease; 
+  margin-right: 5px;
+}
+
+.success-btn:hover {
+  background-color: #218838; 
+}
+
+.success-btn:active {
+  background-color: #1e7e34; 
+}
+
+.success-btn:disabled {
+  background-color: #94d3a2; 
+  cursor: not-allowed; 
+  opacity: 0.65; 
+}
+
+.delete-btn {
+  background-color: #dc3545; 
+  color: white;
+  border: none;
+  height: 32px;
+  width: 40px;
+  font-size: 16px; 
+  border-radius: 5px; 
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: 5px;
+}
+
+.delete-btn:hover {
+  background-color: #c82333; 
+}
+
+.delete-btn:active {
+  background-color: #bd2130;
+}
+
+.delete-btn:disabled {
+  background-color: #e6a2ab;
+  cursor: not-allowed; 
+  opacity: 0.65; 
+}

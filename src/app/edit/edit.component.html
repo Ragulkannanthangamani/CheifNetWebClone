@@ -37,7 +37,10 @@
                 
                </div>
 
-                <button *ngIf="!isloading" class="btn btn-primary" type="submit" [disabled]="userform.get('name')?.invalid">Submit</button>
+                <button *ngIf="!isloading" [ngClass]="{
+                  'disabled-btn': !(userform.dirty && userform.valid),
+                  'enabled-btn': (userform.dirty && userform.valid)
+                }"  class="mt-4 mb-4"  type="submit" [disabled]="!userform.dirty ||userform.get('name')?.invalid">Submit</button>
 
 
       </form>

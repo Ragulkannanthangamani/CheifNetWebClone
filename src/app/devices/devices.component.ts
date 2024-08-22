@@ -39,8 +39,6 @@ export class DevicesComponent implements OnInit, OnDestroy {
       this.paginationSubscription.unsubscribe();
     }
   }
-   
-  
 
   logout() {
     localStorage.clear();

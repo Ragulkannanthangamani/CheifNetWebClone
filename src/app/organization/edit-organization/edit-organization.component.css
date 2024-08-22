@@ -30,10 +30,34 @@
     background-size: cover; 
     background-repeat: no-repeat; 
     background-position: center; 
-    height: 100vh; 
+    height: 50rem; 
     margin: 0; 
-   
+    
   }
-  .submit{
+  /* .submit{
     margin-left: 10px;
-  }
+  } */
+
+.disabled-btn {
+    cursor: not-allowed !important;
+    border: none;
+    background-color:#0dcaf059;;
+    color: rgba(0, 0, 0, 0.466);
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 15px;
+    height: 35px;
+    width: 70px;
+}
+
+.enabled-btn {
+    cursor: pointer !important;
+    border: none;
+    background-color:#0d6efd;
+    color: rgb(0, 0, 0);
+    padding: 3px;
+    border-radius: 5px;
+    font-size: 15px;
+    height: 35px;
+    width: 70px;
+}
